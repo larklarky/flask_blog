@@ -1,5 +1,10 @@
 {% extends "layout.html" %}
 {% block content %}
+
+    <form action="/home" method="GET">
+        <input type="search" name="query">
+        <button type="submit">Search</button>
+    </form>
     {% for post in posts.items %}
 
         <article class="media content-section">
