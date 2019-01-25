@@ -19,6 +19,19 @@ def save_picture(form_picture):
 
     return picture_fn
 
+def save_image(form_image):
+    random_hex = secrets.token_hex(8)
+    _, f_ext = os.path.splitext(form_image.filename)
+    image_fn = random_hex + f_ext
+    image_path = os.path.join(current_app.root_path, 'static/post_pics', image_fn)
+
+    output_size = (780, 550)
+    i = Image.open(form_image)
+    i.thumbnail(output_size)
+    i.save(image_path)
+
+    return image_fn
+
 
 def send_reset_email(user):
     token = user.get_reset_token()

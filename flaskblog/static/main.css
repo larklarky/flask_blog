@@ -96,3 +96,11 @@ body {
 footer p {
   margin: 10px;
 }
+
+.img-responsive {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
