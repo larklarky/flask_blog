@@ -47,6 +47,8 @@ body {
   
   .article-content {
     white-space: pre-line;
+    border-bottom: 1px solid #e3e3e3;
+    padding-bottom: 1rem;
   }
   
   .article-img {
@@ -103,4 +105,31 @@ footer p {
   vertical-align: middle;
   margin-bottom: 1rem;
   margin-top: 1rem;
+}
+
+button.search{
+  background-color: #fdfdfe;
+  color: #818182;
+  border: 2px solid #e7e7e7;
+  padding: 8px 24px;
+  transition-duration: 0.4s;
+  border-radius: 3px;
+}
+
+input.search {
+  width: 65%;
+  padding: 8px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 1px solid #cdd5d9;
+  border-radius: 3px;
+}
+
+button:hover {
+  background-color: #e7e7e7;;
+  color: #5f788a;
+}
+
+.fb-like {
+  margin: 5px 0 10px 0;
 }
