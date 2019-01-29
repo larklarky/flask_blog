@@ -75,6 +75,14 @@
         this.page.url = "{{ url_for('posts.post', post_id=post.id, _external=True) }}";
         this.page.identifier = "{{ post.id }}";
         };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://http-127-0-0-1-5000.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
     </script>
+    <script id="dsq-count-scr" src="//http-127-0-0-1-5000.disqus.com/count.js" async></script>
 {% endblock content %}
 
