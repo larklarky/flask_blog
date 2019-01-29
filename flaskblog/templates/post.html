@@ -49,6 +49,7 @@
             </div>
         </div>
     </article>
+    <div id="disqus_thread"></div>
     <!-- Modal -->
     <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -68,5 +69,12 @@
             </div>
         </div>
     </div>
+    <!-- JavaScript for comments -->
+    <script>
+        var disqus_config = function () {
+        this.page.url = "{{ url_for('posts.post', post_id=post.id, _external=True) }}";
+        this.page.identifier = "{{ post.id }}";
+        };
+    </script>
 {% endblock content %}
 
