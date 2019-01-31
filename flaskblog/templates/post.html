@@ -35,7 +35,9 @@
             {% if post.image %}
                 <img class="img-responsive", src="{{ url_for('static', filename='post_pics/' + post.image) }}">
             {% endif %}
-            <p class="article-content">{{ post.content }}</p>
+            
+            <p class="article-content">{{ post.content|safe }}</p>
+
 
             <!-- Your like button code -->
             
@@ -84,5 +86,6 @@
         })();
     </script>
     <script id="dsq-count-scr" src="//http-127-0-0-1-5000.disqus.com/count.js" async></script>
+
 {% endblock content %}
 

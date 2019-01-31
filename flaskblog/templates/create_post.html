@@ -22,16 +22,16 @@
             </div>
 
             <div class="form-group"> 
-                    {{ form.content.label(class="form-control-label") }}
-                    {% if form.content.errors %}
+                {{ form.content.label(class="form-control-label") }}
+                {% if form.content.errors %}
                     {{ form.content(class="form-control form-control-lg is-invalid") }}
-                        <div class="invalid-feedback">
-                            {% for error in form.content.errors %}
-                                <span>{{ error }} </span>
-                            {% endfor %}
-                        </div>
-                    {% else %}
-                        {{ form.content(class="form-control form-control-lg") }} 
+                    <div class="invalid-feedback">
+                        {% for error in form.content.errors %}
+                            <span>{{ error }} </span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.content(class="form-control form-control-lg", id="summernote") }}
                 {% endif %}
 
             </div>
@@ -47,7 +47,6 @@
                             {% endif %}
                     </div>
             </div>
-
         </fieldset>
 
         <div class="form-group">
@@ -57,4 +56,22 @@
     </form>
 
 </div>
+
+<!-- Summernote -->
+<script>
+        $('#summernote').summernote({
+            placeholder: '',
+            tabsize: 2,
+            height: 400,
+            toolbar: [
+                // [groupName, [list of button]]
+                ['style', ['bold', 'italic', 'underline', 'clear']],
+                ['font', ['strikethrough']],
+                ['fontsize', ['fontsize']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['height', ['height']]
+            ]
+        });
+    </script>
 {% endblock content %}

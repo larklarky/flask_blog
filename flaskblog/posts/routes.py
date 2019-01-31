@@ -4,6 +4,7 @@ from flaskblog import db
 from flaskblog.models import Post
 from flaskblog.posts.forms import PostForm
 from flaskblog.users.utils import save_image
+from flaskblog.posts.utils import sanitize_html
 
 posts = Blueprint('posts', __name__)
 
@@ -15,9 +16,9 @@ def new_post():
     if form.validate_on_submit():
         if form.image.data:
             image_file = save_image(form.image.data)
-            post = Post(title=form.title.data, content=form.content.data, author=current_user, image=image_file)
+            post = Post(title=form.title.data, content=sanitize_html(form.content.data), author=current_user, image=image_file)
         else:
-            post = Post(title=form.title.data, content=form.content.data, author=current_user)
+            post = Post(title=form.title.data, content=sanitize_html(form.content.data), author=current_user)
         db.session.add(post)
         db.session.commit()
         flash('Your post has been created!', 'success')
@@ -40,7 +41,7 @@ def update_post(post_id):
     form = PostForm()
     if form.validate_on_submit():
         post.title = form.title.data
-        post.content = form.content.data
+        post.content = sanitize_html(form.content.data)
         if form.image.data:
             image_file = save_image(form.image.data)
             post.image = image_file
@@ -49,7 +50,7 @@ def update_post(post_id):
         return redirect(url_for('posts.post', post_id=post.id))
     elif request.method == 'GET':
         form.title.data = post.title
-        form.content.data = post.content
+        form.content.data = sanitize_html(post.content)
         form.image.data = post.image
     return render_template('create_post.html', title='Update Post', form=form, legend='Update Post')
 
