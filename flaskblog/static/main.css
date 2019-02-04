@@ -133,3 +133,8 @@ button:hover {
 .fb-like {
   margin: 5px 0 10px 0;
 }
+
+.form-check-input {
+  position: absolute;
+  margin-top: 0.25rem;
+  margin-left: 0;
