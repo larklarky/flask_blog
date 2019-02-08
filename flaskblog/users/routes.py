@@ -105,3 +105,11 @@ def reset_token(token):
         flash('Your password has been updated! You are now able to log in.', 'success')
         return redirect(url_for('users.login'))
     return render_template('reset_token.html', title='Reset Password', form=form)
+
+
+@users.route("/users", methods=['GET', 'POST'])
+def users_list():
+    query = request.args.get('query', '')
+    page = request.args.get('page', 1, type=int)
+    users = User.query.filter(User.username.contains(query)).order_by(User.username.desc()).paginate(page=page, per_page=5)
+    return render_template('users.html', users=users)
